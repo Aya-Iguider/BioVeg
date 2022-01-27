@@ -16,11 +16,16 @@ const con = mysql.createConnection({
     database : "eductseaqfbioveg",
     });
 
-con.connect(function(err) {
+/* con.connect(function(err) {
     if (err) throw err;
     console.log("Connection à la base de données!");
+<<<<<<< HEAD
     });
 */
+=======
+    }); */
+
+>>>>>>> 53078d32ae8913830740eccf7e0400242ac60a69
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/html/index.html');
@@ -34,13 +39,13 @@ io.on('connection', (socket) => {
     let requete1= 'SELECT * FROM `themes`';
     
     
-    con.query(requete1, (err,chap)=>{
+    /* con.query(requete1, (err,chap)=>{
         if (err) throw err;
         
         socket.emit('retourchapitres',chap);
 
         //console.log(chap[1].nom) //Gymnospermes test
-   });
+   }); */
    
 }); 
 });

@@ -5,79 +5,116 @@
     /* box-sizing : border-box; 
     margin : 0;
     padding : 0; */
-    text-align : center;
+    text-align: center;
 }
 
 body {
-      display :grid;
-      align-items : center;
-      justify-items : center;
-      min-height : 100vh;
-      background : white;
-      color: black;
-} 
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: 100vh;
+    background: white;
+    color: black;
+    margin:0;
+}
+
+.center{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50% , -50%)
+  }
+#startBtn{
+    color:#e0e0e0;
+    padding:1rem 2rem;
+    margin: 1rem;
+    background : #285943;
+    transition-duration: .4s;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size:35px;
+}
+#startBtn:hover{
+    color:white;
+    background : #1f4634;
+    box-shadow:0 0 0 .3rem  #bcf17f;
+    transition-duration: .2s;
+    cursor:pointer;
+    transform: scale(0.95);
+}
 
 h1 {
-      font-family: 'Exo', sans-serif;
-      margin-bottom : 2rem;
-      text-transform : uppercase;
-      font-size : 4rem;
+    font-family: 'Exo', sans-serif;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 4rem;
 }
 
 span, i {
-      color : #A1CF6B;
+    color: #A1CF6B;
 }
 
 h3 {
-      color : black;
-      font-size : 1.5rem;
+    color: black;
+    font-size: 1.5rem;
 }
 
 .choices {
-      display : flex;
-      flex-wrap : wrap;
-      margin : 3rem auto 3rem;
-      width : 500px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem auto 3rem;
+    width: 500px;
 }
 
 button {
-    flex : 1 0 45%;
-    width : 200px;
-    height : 80px;
-    border-radius : 5px;
-    cursor : pointer;
-    border : none;
-    margin : .4rem;
-    outline : none;
-    background : #285943;
-    user-select : none;
-    font-weight : 600;
+    flex: 1 0 45%;
+    width: 200px;
+    height: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin: .4rem;
+    outline: none;
+    background: #285943;
+    user-select: none;
+    font-weight: 600;
     transition-duration: .5s;
-    color:white;
+    color: white;
 }
 
 .btn:hover {
-    background : #A1CF6B;
-    transform : scale(0.95);
-    transition-duration : .5s;
+    background: #A1CF6B;
+    transform: scale(0.95);
+    transition-duration: .5s;
 }
 
 .btn:hover:active {
-    background : #bcf17f;
+    background: #bcf17f;
     transform: scale(1.05);
-    transition-duration : .1s;
+    transition-duration: .1s;
 }
 
 p {
-    font-size : 1.3rem;
+    font-size: 1.3rem;
 }
 
 #progress {
-    font-size : 1.3rem;
-    color : #285943;
+    font-size: 1.3rem;
+    color: #285943;
     font-weight: bold;
     /*background: #A1CF6B;*/
-    border:4px solid #E0C879;
-    border-radius:.7rem;
-    padding:.5rem 1rem;
+    border: 4px solid #E0C879;
+    border-radius: .7rem;
+    padding: .5rem 1rem;
+}
+
+.exit a{
+    text-decoration: none;
+}
+.exit a:hover{
+    text-decoration: underline;
+}
+
+#confetti-canvas{
+    width:100%;
 }
