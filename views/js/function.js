@@ -7,7 +7,7 @@ const socket = io();
 socket.emit("chapitres")
 socket.on("retourchapitres",(chap)=>{
 console.log(chap[0].nom)
-  const chapitre = document.getElementById("themes"); 
+  /*const chapitre = document.getElementById("themes"); 
   //pour coller ca dans les div ou le class est "themes"?
   for(var i=0;i<=chap.lenght;i++){
     var chapNom=chap[i].nom;
@@ -21,7 +21,7 @@ console.log(chap[0].nom)
     chapitre.innerHTML += "<a href='"+lien+"'id='chap'"+i+">"+chapNom + "</a>";
   } 
 
-});
+});*/
 
 var mini=true;
 document.getElementById("sidebar").style.width = "30px";
