@@ -21,7 +21,10 @@ let questions = [
 
   new Question("Que ne transporte pas le phloème ?", ["Sucres", "Lipides", "ARN", "Protides"], "Protides"),
 
-  new Question("Par quoi est portée une fleur isolée ?", ["Un pédicelle", "Un pédoncule", "un réceptacle", "Une inflorescence"], "Un pédoncule")
+  new Question("Par quoi est portée une fleur isolée ?", ["Un pédicelle", "Un pédoncule", "un réceptacle", "Une inflorescence"], "Un pédoncule"),
+
+  new Question("Quels sont les deux types de tissus existants ?", ["Tissus simples (plusieurs types de cellules) et composés (un seul type de cellule)", "Tissus pluriel (plusieurs types de cellules) et uniques (un seul type de cellule)", "Tissus pluriel (plusieurs types de cellules) et simples (un seul type de cellule)", "Tissus composés (plusieurs types de cellule) et simples (un seul type de cellule)"], "Tissus composés (plusieurs types de cellule) et simples (un seul type de cellule)")
+
 
 ];
 

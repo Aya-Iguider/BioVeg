@@ -18,6 +18,11 @@ body {
     margin:0;
 }
 
+::selection {
+    background : #A9CEF4;
+    color : #fff;
+}
+
 .center{
     position: absolute;
     top:50%;
@@ -108,13 +113,14 @@ p {
     padding: .5rem 1rem;
 }
 
-.exit a{
-    text-decoration: none;
+.exit a{ 
+    font-family: 'Exo', sans-serif;
+    color:white;
 }
 .exit a:hover{
     text-decoration: underline;
 }
 
 #confetti-canvas{
-    width:100%;
+    width:100%; /* prend tout l'écran */
 }

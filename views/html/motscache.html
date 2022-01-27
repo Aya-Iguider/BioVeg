@@ -9,27 +9,40 @@
 
 
 <body>
+        <div id="startContainer" class="center">
+                <div id="startBtn">Commencer </div>
+                <p>Dans cet exercice, il faut retrouver la définition du mot affiché avant de faire apparaitre la réponse.</p>
+            </div>
 
-<div class="container">
+<div id="container">
     <div id="mot">
         <h1><span>R</span>etrouvez la définition</h1>
-        <p id="question"> <h2></h2></p>
-       <!---- <h2 id="question"></h2> -->
-        <p id="def"> <h3></h3></p>
+        <h3> <div id="question">   </div> </h3>
+       
+       <p> <div id="def"> </div> </p>
 
-       <!----- <b><h3 id="def"></h3></b> -->
+       
         <button id="reponse" > Réponse </button>
         </div>
 
-        <button id="progression" > Suivant </button>
+        <div id= "fin"> <h3></h3> </div>
+
+
+
+         <div id="al">
+        <button id="retour" > Retour </button>
+        <button id="suivant" > Suivant </button>
+         </div>
+
+        
+        <div id=progression></div>
         
     </div>
 
     
 
     <!-- EXIT -->
-    <p class="qtext"><a href="/">Accueil</a></p>
-
+    <button id="exit"><a href="/">Accueil</a></button>
 </div>
 
 
@@ -37,7 +50,7 @@
 
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js" integrity="sha512-MgkNs0gNdrnOM7k+0L+wgiRc5aLgl74sJQKbIWegVIMvVGPc1+gc1L2oK9Wf/D9pq58eqIJAxOonYPVE5UwUFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js" integrity="sha512-MgkNs0gNdrnOM7k+0L+wgiRc5aLgl74sJQKbIWegVIMvVGPc1+gc1L2oK9Wf/D9pq58eqIJAxOonYPVE5UwUFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 
 <script type="text/javascript" src="js/motscache.js"></script> <!-- lien avec page function.js -->
 

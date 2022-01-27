@@ -2,6 +2,11 @@ body {
   font-family: 'Exo', sans-serif;
 }
 
+::selection {
+  background : #A9CEF4;
+  color : #fff;
+}
+
 .sidebar {
   height: 100%;
   width: 250px;

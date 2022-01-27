@@ -1,29 +1,57 @@
-const chapitre = document.getElementsByClassName("themes");
+const sidebar = document.getElementById("sidebar");
 const socket = io();
 
 
 //Pour faire afficher la navigation en dynamique
 
 socket.emit("chapitres")
-socket.on("retourchapitres",(chap)=>{
-console.log(chap[0].nom)
-  /*const chapitre = document.getElementById("themes"); 
-  //pour coller ca dans les div ou le class est "themes"?
-  for(var i=0;i<=chap.lenght;i++){
-    var chapNom=chap[i].nom;
-    chapitre.innerHTML += "<a id='chap'"+i+">"+chapNom + "</a>";
+socket.emit("typeExo")
+let chapTmp
+
+socket.on('retourchapitres', (chap) => {
+  chapTmp = chap;
+  createSubCategories()
+});
+
+
+function createSubCategories() {
+  for (var i = 0; i < chapTmp.length; i++) {
+
+    var chapNom = chapTmp[i].nom;  //Nom du chapitre
+
+    var tmp = document.createElement('div')//Div du chapitre
+    tmp.id = "chapitre" + (i + 1)
+    tmp.classList.add("category")
+    tmp.innerHTML = "<a class='themes' href='#'>" + chapNom + "</a>"
+    tmp.setAttribute('data',i+1)
+
+
+    let tmpDiv = document.createElement('div')
+    tmpDiv.classList.add('subthemesCtn', "hidden")
+    tmpDiv.id = "drop" + (i + 1);
+    tmpDiv.innerHTML = "<a class='subthemes' href='#'>Quiz</a><a class='subthemes' href='#'>Mots croisés</a><a class='subthemes' href='#'>Textes à trous</a>"
+
+    tmp.appendChild(tmpDiv)
+
+
+
+    sidebar.appendChild(tmp)
+    console.log("event listener pour "+ (i + 1))
+    document.getElementById('chapitre'+(i+1)).addEventListener('mouseenter', (e) => {
+     let tmpData = e.target.parentElement.getAttribute('data')
+     //console.log(tmpData)
+     document.getElementById("drop"+tmpData).classList.remove('hidden')
+     document.getElementById("drop"+tmpData).classList.add('visible')
+    })
+
   }
 
-  const exercice=cdocument.getElementById("themes");
-  for(var i=0;i<=chap.lenght;i++){
-    var chapNom=chap[i].nom;
-    var lien="/"+chapNom;
-    chapitre.innerHTML += "<a href='"+lien+"'id='chap'"+i+">"+chapNom + "</a>";
-  } 
+}
 
-});*/
 
-var mini=true;
+
+
+var mini = true;
 document.getElementById("sidebar").style.width = "30px";
 document.getElementById("main").style.marginLeft = "85px";
 function toggleSidebar() {
@@ -37,50 +65,33 @@ function toggleSidebar() {
     this.mini = true;
   }
 }
-document.getElementById('sidebar').addEventListener('mouseeover',()=>{
+
+//Pour corriger le bug de la navigation 
+
+/*document.getElementById('sidebar').addEventListener('mouseeover',()=>{
+  console.log("sidebar")
   document.getElementById("sidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
-  
+
 })
 document.getElementById('sidebar').addEventListener('mouseleave',()=>{
   document.getElementById("sidebar").style.width = "30px";
   document.getElementById("main").style.marginLeft = "85px";
-  
+
+})*/
+
+
+/*document.getElementById("dropAngioCtn0").classList.add('hidden')
+document.getElementById("dropAngio0").addEventListener('mouseleave',()=>{
+  document.getElementById("dropAngioCtn0").classList.add('hidden')
+  document.getElementById("dropAngioCtn0").classList.remove('visible')
 })
-
-//Angiospermes
-document.getElementById("dropAngioCtn").classList.add('hidden')
-document.getElementById("dropAngio").addEventListener('mouseleave',()=>{
-  document.getElementById("dropAngioCtn").classList.add('hidden')
-  document.getElementById("dropAngioCtn").classList.remove('visible')
-})
-document.getElementById("dropAngio").addEventListener('mouseover',()=>{
-  document.getElementById("dropAngioCtn").classList.remove('hidden')
-  document.getElementById("dropAngioCtn").classList.add('visible')
-});
+document.getElementById("dropAngio0").addEventListener('mouseover',()=>{
+  document.getElementById("dropAngioCtn0").classList.remove('hidden')
+  document.getElementById("dropAngioCtn0").classList.add('visible')
+});*/
 
 
-//GymnoSpermes
-document.getElementById("dropGymnoCtn").classList.add('hidden')
-document.getElementById("dropGymno").addEventListener('mouseover',()=>{
-  document.getElementById("dropGymnoCtn").classList.remove('hidden')
-  document.getElementById("dropGymnoCtn").classList.add('visible')
-})
-document.getElementById("dropGymno").addEventListener('mouseleave',()=>{
-  document.getElementById("dropGymnoCtn").classList.add('hidden')
-  document.getElementById("dropGymnoCtn").classList.remove('visible')
-});
 
-
-//Fougeres
-document.getElementById("dropFougCtn").classList.add('hidden')
-document.getElementById("dropFoug").addEventListener('mouseover',()=>{
-  document.getElementById("dropFougCtn").classList.remove('hidden')
-  document.getElementById("dropFougCtn").classList.add('visible')
-})
-document.getElementById("dropFoug").addEventListener('mouseleave',()=>{
-  document.getElementById("dropFougCtn").classList.add('hidden')
-  document.getElementById("dropFougCtn").classList.remove('visible')
-});
 
 
