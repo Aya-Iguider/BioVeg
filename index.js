@@ -8,7 +8,7 @@ const io = new Server(server);
 app.use(express.static(__dirname + '/views'));
 
 //connexion à la BDD
-var mysql = require('mysql')
+/*var mysql = require('mysql')
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -20,7 +20,7 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Connection à la base de données!");
     });
-
+*/
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/html/index.html');
@@ -79,5 +79,10 @@ app.get("/accueil", (request, response) => {
 
 app.get("/annales", (request, response) => {
     response.sendFile(__dirname + "/views/html/annales.html");
+
+});
+
+app.get("/motscache", (request, response) => {
+    response.sendFile(__dirname + "/views/html/motscache.html");
 
 });
