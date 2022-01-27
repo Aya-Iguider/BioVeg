@@ -1,87 +1,73 @@
-* {
-    margin : 0;
-    padding : 0;
-    box-sizing : border-box;
-    font-family: 'Exo', sans-serif;
 
+
+#formLogin {
+    background-color: #A1CF6B;
+    max-width: 450px;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    padding: 30px 30px;
+    transition-duration: .2s;
+}
+#formLogin:hover{
+    box-shadow : 0px 0px 0px 2px #285943;
+    transition-duration: .2s;
 }
 
-body {
-    display : grid;
-    height : 100%;
-    width : 100%;
-    place-items : center;
-    background-color : white;
-}
 
-::selection {
-    background : #A9CEF4;
-    color : #fff;
-}
-
-/*.form-inner {
-    overflow : hidden;
-    max-width : 390px;
-    background-color : blue;
-    padding : 30px;
-    border-radius : 40px;
-    flex: 1 0 45%;
-    width: 200px;
-    height: 80px;
+#formLogin > input {
+    margin: 10px 0;
+    padding: 8px 10px;
+    outline: none;
+    box-shadow : 0px 0px 0px 1px #285943;
+    border:none;
     border-radius: 5px;
-    border: none;
-    background: #285943;
-    user-select: none;
-    font-weight: 600;
-    transition-duration: .5s;
-    color: white;
-    box-shadow: 0px 0px 40px black;
-} */
-
-
-h1 {
-    font-family : 'Exo', sans-serif;
-    color: #A1CF6B;
-    font-size: 2.5em;
-    text-align: center;
-    text-transform: uppercase;
-    margin: .5rem .5rem 5rem .5rem;
+    transition-duration: .2s;
+}
+#formLogin > input:focus{
+    box-shadow : 0px 0px 0px 4px #285943;
+    transition-duration: .2s;
 }
 
-h1:hover {
-    color : #285943;
-    cursor: pointer;
-  }
-
-.form-container {
-    background-color : blue;
-}
-
-
-button {
-    font-family: 'Exo', sans-serif;
-    flex: 1 0 45%;
-    width: 200px;
-    height: 80px;
+#formLogin > button {
+    margin: 10px 0;
+    padding: 8px 10px;
+    outline: none;
+    box-shadow : 0px 0px 0px 1px #285943;
+    border:none;
     border-radius: 5px;
     cursor: pointer;
-    border: none;
-    margin: .4rem;
     background: #285943;
-    user-select: none;
-    font-weight: 600;
-    transition-duration: .5s;
-    color: white;
+    color: #F9F9F9;
+    transition-duration: .2s;
+}
+#formLogin > button:hover{
+    box-shadow : 0px 0px 0px 4px #bcf17f;
+    transition-duration: .2s;
+    color:rgb(255, 255, 255);
+} 
+
+
+#formLogin > select {
+    border: rgb(141, 141, 141) solid 1px;
+    border-radius: 5px;
+    outline: none;
 }
 
-.btn:hover {
-    background: #A1CF6B;
-    transform: scale(0.95);
-    transition-duration: .5s;
+#login {
+    cursor: pointer;
+    color: #285943;
+    margin: 20px 0 0 0;
+    transition-duration: .2s;
 }
 
-.btn:hover:active {
-    background: #bcf17f;
-    transform: scale(1.05);
-    transition-duration: .1s;
+#login:hover{
+    color:black;
+    transition-duration: .2s;
+} 
+#errorMessage{
+    color:rgb(150, 1, 1);
+    text-align:center;
 }

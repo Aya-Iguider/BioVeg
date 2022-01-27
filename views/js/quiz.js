@@ -68,7 +68,20 @@ const display = {
         <h3> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>
         <p class="qtext"><a href="/">Accueil</a></p>`;
     this.elementShown("quiz", endQuizHTML);
-    startConfetti();
+
+    if((quiz.score/quiz.questions.length)*100 > 70){
+      startConfetti();
+    }
+    else if((quiz.score/quiz.questions.length)*100 > 30 ){
+      for (let j = 0; j<10;j++){
+        document.getElementById("snowflakes").innerHTML +='<div class="snowflake">😐</div>';
+      }
+    }
+    else{
+      for (let j = 0; j<10;j++){
+        document.getElementById("snowflakes").innerHTML +='<div class="snowflake">👎🏻</div>';
+      }
+    }
 
   },
 

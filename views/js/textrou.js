@@ -6,25 +6,15 @@ var fin = document.getElementById("fin");
 let startBtn = document.getElementById("startBtn");
 
 
-    question.style.display = 'none';
-    boutonValider.style.display = 'none';
-    progression.style.display='none';
-    reponse.style.display='none';
-    fin.style.display='none';
+conteneur.style.display = 'none';
+startBtn.style.display='block';
+
 
 startBtn.addEventListener('click',()=>{
-    question.style.display = 'table-cell';
-   boutonValider.style.display = "table-cell";
-    progression.style.display="table-cell";
-    reponse.style.display="table-cell";
+    conteneur.style.display='block';
     startBtn.style.display='none';
-    questionSuivante();
-    quizApp();
-    question.textContent=questRep[n].quest;
-    questionSuivante();
-    quizApp();
 
-})
+})*/
 
 reponse.addEventListener('keydown',function(e){
     if(e.key==="Enter") {boutonValider.onclick()} //pour que la touche entrée valide la saisie

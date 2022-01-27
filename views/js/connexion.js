@@ -1,26 +1,29 @@
-const loginText = document.querySelector(".title-text.login");
+const formLogin = document.getElementById("formLogin");
+const email = document.getElementById("emailLogin");
+const password = document.getElementById("passwordLogin");
 
-const loginForm = document.querySelector("form.login");
+const login = document.getElementById("login");
 
-const loginBtn = document.querySelector("label.login");
+const socket = io();
+let join = false;
 
-loginBtn.onclick = (() => {
-    loginForm.style.marginLeft = "0%";
-    loginText.style.marginLeft = "0%";
-
-    var adress= document.getElementbyId("")
-    var password= document.getElementbyId("")
-
-    var adrress_correct=""
-    var mdp_correct=""
-
-    if(adress==adress_correct && mdp==mdp_correct){
-        //connecte
-        //start session
-        //redirigé
-    }
-
+formLogin.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let dataConnect = {'email':email.value,'password':password.value}
+    console.log(dataConnect)
+    socket.emit('queryconnexion',dataConnect)
 });
+
+socket.on('wrongconnexion',()=>{
+    console.log('c pas bon')
+    document.getElementById("errorMessage").innerHTML = "Echec de la connexion" 
+})
+
+socket.on('goodconnexion',()=>{
+    console.log('c bon')
+    document.getElementById("errorMessage").innerHTML = "" 
+})
+
  
 
 

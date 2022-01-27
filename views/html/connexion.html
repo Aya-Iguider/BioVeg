@@ -4,52 +4,28 @@
     <meta charset="utf-8">
     <title>Formulaire de connexion</title>
     <link rel="stylesheet" href="../styleConnexion.css">
+    <link rel="stylesheet" href="../style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
 </head>
 
 <body>
+    <h1 id="titre">VEGETA'LEARN</h1>
+    <form id="formLogin">
 
-    <div class="wrapper">
-        <div class="title login">
-            <h1>Formulaire de connexion</h1>
-        </div>
-    </div>
-
-    <div class="form-container">
-        <div class="slide-controls">
-            <input type="radio" name="slide" id="login" checked>
-            <label for="login" class="slide login">Connexion</label>
-            <div class="slider-tab"></div>
-        </div>
-
-        <div class="form-inner">
-            <form action="#" class="login">
-                
-                <div class="field">
-                    <input type="text" placeholder="Adresse mail" required>
-                </div>
-
-                <div class="field">
-                    <input type="password" placeholder="Mot de passe" required>
-                </div>
-
-                <!--<div class="fiel btn">
-                    <div class="btn-layer"></div>
-                    <input type="submit" value="Se connecter">
-                </div> -->
-
-                <button id="bouton" class="btn">
-                    <p id="btn">Envoyer</p>
-                </button>
-
-            </form>
-        </div>
-
-    </div>
+        <input type="text" id="emailLogin" placeHolder="Votre mail" required>
+        <input type="password" id="passwordLogin" placeHolder="Votre mot de passe" required>
+       
+        <p id="errorMessage"></p>
+        <button type="submit" id="Connexion" class='btn'>Connexion</button>
+    </form>
 
 </body>
 
 <script type="text/javascript" src="../js/connexion.js"></script>
+<script src="../js/logger.js"></script>
 
 
 </html>

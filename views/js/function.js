@@ -1,11 +1,14 @@
 const sidebar = document.getElementById("sidebar");
 const socket = io();
 
+let exoAttribute
+let chapAttribute
+
 
 //Pour faire afficher la navigation en dynamique
 
 socket.emit("chapitres")
-socket.emit("typeExo")
+
 let chapTmp
 
 socket.on('retourchapitres', (chap) => {
@@ -25,12 +28,13 @@ function createSubCategories() {
     tmp.innerHTML = "<a class='themes' href='#'>" + chapNom + "</a>"
     tmp.setAttribute('data',i+1)
 
+    
 
     let tmpDiv = document.createElement('div')
     tmpDiv.classList.add('subthemesCtn', "hidden")
     tmpDiv.id = "drop" + (i + 1);
-    tmpDiv.innerHTML = "<a class='subthemes' href='#'>Quiz</a><a class='subthemes' href='#'>Mots croisés</a><a class='subthemes' href='#'>Textes à trous</a>"
-
+    tmpDiv.innerHTML = "<a class='subthemes' id='1'href='#'>Quiz</a><a class='subthemes' id='2' href='#'>Mots caché</a><a class='subthemes' id='3' href='#'>Textes à trous</a>"
+    tmpDiv.setAttribute('data',i+1)
     tmp.appendChild(tmpDiv)
 
 
@@ -38,14 +42,27 @@ function createSubCategories() {
     sidebar.appendChild(tmp)
     console.log("event listener pour "+ (i + 1))
     document.getElementById('chapitre'+(i+1)).addEventListener('mouseenter', (e) => {
-     let tmpData = e.target.parentElement.getAttribute('data')
-     //console.log(tmpData)
+     let tmpData = e.target.getAttribute('data')
      document.getElementById("drop"+tmpData).classList.remove('hidden')
      document.getElementById("drop"+tmpData).classList.add('visible')
     })
+    document.getElementById('chapitre'+(i+1)).addEventListener('mouseleave', (e) => {
+     let tmpData1 = e.target.getAttribute('data')
+     document.getElementById("drop"+tmpData1).classList.add('hidden')
+     document.getElementById("drop"+tmpData1).classList.remove('visible')
+    })
 
+    document.getElementById('drop'+(i+1)).addEventListener('click', (e) => {
+      exoAttribute = e.target.getAttribute('id') 
+      console.log(exoAttribute)   
+      chapAttribute =e.target.parentElement.getAttribute('data')
+      console.log(chapAttribute)
+      socket.emit("choixUser",chapAttribute,exoAttribute)
+      window.location.href="http://localhost:3000/allquiz/"+chapAttribute+"&"+exoAttribute;
+     })
+    
   }
-
+    //sidebar.innerHTML = "<div id='chapitre' class='category'><a class='themes' href='annales'> Annales </a></div>"
 }
 
 
@@ -79,17 +96,6 @@ document.getElementById('sidebar').addEventListener('mouseleave',()=>{
   document.getElementById("main").style.marginLeft = "85px";
 
 })*/
-
-
-/*document.getElementById("dropAngioCtn0").classList.add('hidden')
-document.getElementById("dropAngio0").addEventListener('mouseleave',()=>{
-  document.getElementById("dropAngioCtn0").classList.add('hidden')
-  document.getElementById("dropAngioCtn0").classList.remove('visible')
-})
-document.getElementById("dropAngio0").addEventListener('mouseover',()=>{
-  document.getElementById("dropAngioCtn0").classList.remove('hidden')
-  document.getElementById("dropAngioCtn0").classList.add('visible')
-});*/
 
 
 
