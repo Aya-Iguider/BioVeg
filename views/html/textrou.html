@@ -3,6 +3,7 @@
     
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../styleConnexion.css">
         <link rel="stylesheet" type="text/css" href="../styletextrou.css">
         <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200&family=Fira+Sans+Condensed:wght@200&family=Lobster+Two&family=Permanent+Marker&display=swap" rel="stylesheet">
         
@@ -10,17 +11,22 @@
     
     <BODY>
 
-         <div id="startContainer" class="center">
-        <div id="startBtn">Commencer </div>
-        <!--<p>Vous aurez <b>30 secondes</b> pour faire ce quizz !</p>-->
-         </div>
+        <div id="startContainer" class="center">
+            <form id="formLogin">
+                <input type="text" id="emailLogin" placeHolder="Votre mail" required>
+                <input type="password" id="passwordLogin" placeHolder="Votre mot de passe" required>    
+                <p id="errorMessage">Mot de passe ou email incorrects.</p>
+                <div id="startBtn">Commencer </div>
+            </form>
+            <!--<p>Vous aurez <b>30 secondes</b> pour faire ce quizz !</p>-->
+        </div>
             
 
         <div id="conteneur">
             <h1><span>T</span>exte à trou</h1>
                 <p id="question"> <h3></h3></p>
                 
-                <input type="texte" name="mot" maxlenght="10", id="reponse", autocomplete="off">
+                <input type="texte" name="mot" maxlength="10", id="reponse", autocomplete="off">
                 
                 <button id="boutonValider" > Valider </button>
 
@@ -37,7 +43,9 @@
         
 
     </BODY>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"
+    integrity="sha512-MgkNs0gNdrnOM7k+0L+wgiRc5aLgl74sJQKbIWegVIMvVGPc1+gc1L2oK9Wf/D9pq58eqIJAxOonYPVE5UwUFA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="js/textrou.js"></script>
 <script type="text/javascript" src="js/confetti.js"></script> <!-- lien avec page function.js -->
 

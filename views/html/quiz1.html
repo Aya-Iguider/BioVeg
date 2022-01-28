@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../styleConnexion.css">
     <link rel="stylesheet" type="text/css" href="../stylequiz.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200&family=Fira+Sans+Condensed:wght@200&family=Lobster+Two&family=Permanent+Marker&display=swap"
@@ -13,8 +14,15 @@
 <body>
 
     <div id="startContainer" class="center">
-        <div id="startBtn">Commencer </div>
-        <p>Vous aurez <b>30 secondes</b> pour faire ce quiz !</p>
+
+        <form id="formLogin">
+            <input type="text" id="emailLogin" placeHolder="Votre mail" required>
+            <input type="password" id="passwordLogin" placeHolder="Votre mot de passe" required>    
+            <p id="errorMessage">Mot de passe ou email incorrects.</p>
+            <div id="startBtn">Commencer </div>
+            <p>Vous aurez <b>30 secondes</b> pour faire ce quiz !</p>
+        </form>
+
     </div>
 
     <div id="quizContainer" class="container">

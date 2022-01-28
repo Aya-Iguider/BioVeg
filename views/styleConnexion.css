@@ -12,7 +12,7 @@
     transition-duration: .2s;
 }
 #formLogin:hover{
-    box-shadow : 0px 0px 0px 2px #285943;
+    box-shadow : 0px 0px 0px 4px #285943;
     transition-duration: .2s;
 }
 
@@ -70,4 +70,7 @@
 #errorMessage{
     color:rgb(150, 1, 1);
     text-align:center;
+    display:none;
+    margin:1rem 0 0 0;
+    font-weight:bold;
 }

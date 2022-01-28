@@ -22,11 +22,15 @@ const con = mysql.createConnection({
 
     });
 
-
+var chapitreChoisi, exoChoisi
 let target = "@student.junia.com"
+
+
 io.on('connection', (socket) => {
+
   console.log('socket.io est connecté');
-    //requete de connection
+
+    //requete de connexion
     socket.on("queryconnexion",(dataConnect)=>{
         console.log(dataConnect.email + ' veut se connecter avec le mdp : ' + dataConnect.password)
         if(dataConnect.password != 'admin'){
@@ -57,30 +61,40 @@ io.on('connection', (socket) => {
 
     socket.on('choixUser',(chapAttribute,exoAttribute)=>{
         console.log("user à cliqué sur un exercice")
-        let requete= "SELECT * FROM `themes`"; 
-        let requete2="SELECT * FROM `type_exo`"; 
+        let requete= "SELECT * FROM `themes`";
         con.query(requete, (err,chap)=>{  
             if (err)throw err 
-            for(var i=0;i<=chap;i++){
-                if(chap[i].id==chapAttribute){
-                    socket.emit('retourchapUser',chap[i].nom);
-                    //console.log(type_exo[0].nom) //Quiz test
+            for(var i=0;i<=chap.length-1;i++){
+                if(chap[i].id==chapAttribute && 1<=exoAttribute<=3){
+                    console.log("Boucle if ok")
+                    chapitreChoisi=chap[i]
+                    switch (exoAttribute) {
+                        case "1": exoChoisi={id:1,nom:"Quiz"}
+                        break;
+                        case "2": exoChoisi={id:2,nom:"MotCache"}
+                        break;
+                        case "3": exoChoisi={id:3,nom:"TexteTrou"}
+
+                        break;
+                    }
+                    socket.emit('retourClick',chapitreChoisi,exoChoisi) 
+                    app.get("/allquiz/:chap&:exo", (request, response) => {
+                        var chap = request.params.chapitre
+                        var exo = request.params.exo
+                        
+                        response.sendFile(__dirname + "/views/html/listeQuizs.html");
+                    
+                    });
                 }
             }  
-        }); 
-        con.query(requeteZ, (err,clickedExo)=>{  
-            if (err)throw err 
-        
-            socket.emit('retourexoUser',clickedExo);
-            //console.log(type_exo[0].nom) //Quiz test
-            
         }); 
     })
 
 
 //requete pour obtenir la liste des exos
-    socket.on('exoname',()=> {
+    socket.on('exolist',()=> {
         console.log("l'user me demande la liste des exos")
+        console.log(chapitreChoisi+"et"+exoChoisi)
         let requete= 'SELECT * FROM `num_exo` WHERE ';
             con.query(requete, (err,exo)=>{
                 if (err) throw err;
@@ -92,19 +106,6 @@ io.on('connection', (socket) => {
    
     }); 
 
-/*//requete pour les questions de quiz
-    socket.on('quiz',()=> {
-        console.log("l'user me demande la liste des exos")
-        let requete= 'SELECT * FROM `num_exo`';
-            con.query(requete, (err,exo)=>{
-                if (err) throw err;
-                
-                socket.emit('retourquiz',chap);
-
-                
-            }); 
-
-    }); */
 });
 
 server.listen(3000, () => {
@@ -117,12 +118,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/html/index.html');
 });
 
-app.get("/allquiz/:chap&:exo", (request, response) => {
-    var chap = request.params.chap
-    var exo = request.params.exo 
-    response.sendFile(__dirname + "/views/html/listeQuizs.html");
 
-});
 
 app.get("/alltextrou", (request, response) => {
     response.sendFile(__dirname + "/views/html/listeTextrou.html");

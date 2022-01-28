@@ -1,3 +1,4 @@
+const socket = io()
 class Question {
 
   constructor(text, choices, answer) { //informations que l'on veut afficher et récupérer
@@ -167,8 +168,24 @@ let quiz = new Quiz(questions);
 let startBtn = document.getElementById("startBtn");
 let quizCtn = document.getElementById('quizContainer')
 let startCtn = document.getElementById("startContainer");
+
+const formLogin = document.getElementById("formLogin");
+const email = document.getElementById("emailLogin");
+const password = document.getElementById("passwordLogin");
+
+const login = document.getElementById("login");
+
 quizCtn.style.display = 'none';
 startBtn.addEventListener('click',()=>{
+  let dataConnect = {'email':email.value,'password':password.value}
+  socket.emit('queryconnexion',dataConnect)
+})
+
+socket.on('wrongconnexion',()=>{
+  document.getElementById("errorMessage").style.display = "block" 
+})
+
+socket.on('goodconnexion',()=>{
   startTimer();
   quizCtn.style.display = 'block'
   startCtn.style.display = 'none'

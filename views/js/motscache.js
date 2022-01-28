@@ -1,3 +1,4 @@
+const socket = io()
 var question = document.getElementById("question");
 var def = document.getElementById("def");
 var reponse = document.getElementById("reponse");
@@ -10,6 +11,12 @@ var startBtn = document.getElementById("startBtn");
 var startCtn = document.getElementById("startContainer");
 var exit=document.getElementById("exit");
 
+
+const formLogin = document.getElementById("formLogin");
+const email = document.getElementById("emailLogin");
+const password = document.getElementById("passwordLogin");
+
+const login = document.getElementById("login")
 
   var questRep = [
     {
@@ -101,7 +108,18 @@ var exit=document.getElementById("exit");
 
 exit.style.display='none';
 container.style.display = 'none';
+
+
 startBtn.addEventListener('click',()=>{
+  let dataConnect = {'email':email.value,'password':password.value}
+  socket.emit('queryconnexion',dataConnect)
+})
+
+socket.on('wrongconnexion',()=>{
+  document.getElementById("errorMessage").style.display = "block" 
+})
+
+socket.on('goodconnexion',()=>{
   container.style.display = 'block'
   startCtn.style.display = 'none'
   exit.style.display='block'

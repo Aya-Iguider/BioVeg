@@ -16,6 +16,11 @@ socket.on('retourchapitres', (chap) => {
   createSubCategories()
 });
 
+socket.on('retourClick', (chapitreChoisi,exoChoisi) => {
+  console.log("je redirige")
+  window.location.href="http://localhost:3000/allquiz/"+chapitreChoisi.nom+"&"+exoChoisi.nom;
+});
+
 
 function createSubCategories() {
   for (var i = 0; i < chapTmp.length; i++) {
@@ -54,16 +59,20 @@ function createSubCategories() {
 
     document.getElementById('drop'+(i+1)).addEventListener('click', (e) => {
       exoAttribute = e.target.getAttribute('id') 
-      console.log(exoAttribute)   
+      //console.log(exoAttribute)   
       chapAttribute =e.target.parentElement.getAttribute('data')
-      console.log(chapAttribute)
+      //console.log(chapAttribute)
       socket.emit("choixUser",chapAttribute,exoAttribute)
-      window.location.href="http://localhost:3000/allquiz/"+chapAttribute+"&"+exoAttribute;
+
+      
      })
     
   }
     //sidebar.innerHTML = "<div id='chapitre' class='category'><a class='themes' href='annales'> Annales </a></div>"
 }
+
+
+
 
 
 

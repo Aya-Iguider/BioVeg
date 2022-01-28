@@ -1,23 +1,43 @@
+const socket = io()
 var reponse = document.getElementById("reponse");
 var boutonValider = document.getElementById("boutonValider");
 var question = document.getElementById("question");
 var progression = document.getElementById("progression");
 var fin = document.getElementById("fin");
 let startBtn = document.getElementById("startBtn");
+let ctn = document.getElementById('conteneur')
+let startCtn = document.getElementById('startContainer')
 
 
-conteneur.style.display = 'none';
-startBtn.style.display='block';
+const formLogin = document.getElementById("formLogin");
+const email = document.getElementById("emailLogin");
+const password = document.getElementById("passwordLogin");
+
+const login = document.getElementById("login")
+
+ctn.style.display = 'none';
+startCtn.style.display='block';
 
 
 startBtn.addEventListener('click',()=>{
-    conteneur.style.display='block';
-    startBtn.style.display='none';
+    let dataConnect = {'email':email.value,'password':password.value}
+    socket.emit('queryconnexion',dataConnect)
+})
 
-})*/
+socket.on('wrongconnexion',()=>{
+    document.getElementById("errorMessage").style.display = "block" 
+})
+  
+socket.on('goodconnexion',()=>{
+    ctn.style.display='block';
+    startCtn.style.display='none';
+})
+
+
+
 
 reponse.addEventListener('keydown',function(e){
-    if(e.key==="Enter") {boutonValider.onclick()} //pour que la touche entrée valide la saisie
+    //if(e.key==="Enter") {boutonValider.onclick()} //pour que la touche entrée valide la saisie
 
 });
 
@@ -61,6 +81,7 @@ function quizApp () {
     progression.textContent= "Question " + 1 + " sur " + questRep.length;
   
     boutonValider.onclick=function(){
+        console.log('ici ca valiide')
         if(n===questRep.length-1)
         {
             question.style.display = 'none';
